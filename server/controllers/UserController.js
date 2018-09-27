@@ -17,7 +17,9 @@ class UserController{
             password: hash
         })
         .then(user =>{
+            // console.log('USER REGISTER--->',user)
             jwt.sign({
+                userid: user._id,
                 name: user.name,
                 username: user.username,
                 email: user.email
@@ -46,6 +48,7 @@ class UserController{
                     
                     // get jwt token
                     jwt.sign({
+                        userid: user._id,
                         name: user.name,
                         username: user.username,
                         email: user.email
@@ -64,7 +67,9 @@ class UserController{
         }else if(inputStatus === false){
             User.findOne({ password: hash, username: req.body.logininput})
                 .then(user => {
+                    console.log('user---->',user)
                     jwt.sign({
+                        userid: user._id,
                         name: user.name,
                         username: user.username,
                         email: user.email

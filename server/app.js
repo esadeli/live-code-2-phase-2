@@ -12,8 +12,10 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors())
 
 const UserRouters = require('./routes/UserRouters')
+const StatusRouters = require('./routes/StatusRouters')
 
 app.use('/users',UserRouters)
+app.use('/status',StatusRouters)
 
 app.get('/',(req,res)=>{
     console.log('Base set up')

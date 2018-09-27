@@ -1,6 +1,18 @@
 <template>
   <div id="app">
     <Navbar @result-token = "gettoken" @result-id= "getuserid" @result-name = "getname"></Navbar>
+    <div class="container container-content">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="list-group">
+            <a href="#" class="list-group-item">All Quotes</a>
+          </div>
+        </div>
+         <div class = "col-lg-9">
+           <ListStatus :token = "token"></ListStatus>
+         </div> 
+      </div>
+    </div>
     <!--
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -9,12 +21,14 @@
     <router-view/>
     -->
   </div>
+</div>  
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
+import ListStatus from '@/components/ListStatus.vue'
 export default {
   components: {
-    Navbar
+    Navbar,ListStatus
   },
   data () {
     return {

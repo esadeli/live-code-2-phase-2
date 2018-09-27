@@ -8,7 +8,7 @@
               <div class="alert alert-danger" role="alert">
                   Username/password/email tidak sesuai
               </div>
-          </div>  
+          </div>
           <div v-if= "token === '' || token === null">
               <input type="text" v-model= "inputlogin" placeholder="username/email">
               <input type="password" v-model= "password" placeholder="password">
@@ -39,8 +39,8 @@ export default {
   },
   methods: {
     loginUser () {
-      // reset error  
-      this.error = ''  
+      // reset error
+      this.error = ''
       let self = this
       axios({
         method: 'POST',
@@ -50,8 +50,8 @@ export default {
           password: self.password
         }
       })
-        .then(user => {
-          self.token = user.data.token
+        .then(user => {  
+          self.token = user.data.data
           self.name = user.data.name
           self.userid = user.data.id
           // send to local storage
@@ -69,14 +69,13 @@ export default {
           console.log('ERROR: ', error)
         })
     },
-    
+
     // logout
-    logoutUser(){
+    logoutUser () {
       this.token = ''
       this.name = ''
       this.userid = ''
       this.error = ''
-      
       localStorage.removeItem('token')
       localStorage.removeItem('name')
       localStorage.removeItem('id')
