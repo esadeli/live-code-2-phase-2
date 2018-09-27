@@ -36,11 +36,9 @@ class UserController{
     // login
     static userLogin(req,res){
         let hash = HashPassword(req.body.password)
-        console.log('Ini input---->',req.body.logininput)
 
         // check the input first
         let inputStatus = EmailValidator(req.body.logininput)
-
         // if email
         if(inputStatus === true){
             User.findOne({ password: hash, email: req.body.logininput})
@@ -54,7 +52,9 @@ class UserController{
                     },process.env.SECRETTOKEN,(error,token)=>{
                         res.status(200).json({
                             msg: 'Login sukses',
-                            data: token
+                            data: token,
+                            id: user._id,
+                            name: user.name,
                         })
                     })
                 })
@@ -71,7 +71,9 @@ class UserController{
                     },process.env.SECRETTOKEN,(error,token)=>{
                         res.status(200).json({
                             msg: 'Login sukses',
-                            data: token
+                            data: token,
+                            id: user._id,
+                            name: user.name,
                         })
                     })
                 })

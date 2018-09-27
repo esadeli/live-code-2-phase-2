@@ -1,12 +1,41 @@
 <template>
   <div id="app">
+    <Navbar @result-token = "gettoken" @result-id= "getuserid" @result-name = "getname"></Navbar>
+    <!--
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    -->
   </div>
 </template>
+<script>
+import Navbar from '@/components/Navbar.vue'
+export default {
+  components: {
+    Navbar
+  },
+  data () {
+    return {
+      token: '',
+      name: '',
+      userid: ''
+    }
+  },
+  methods: {
+    gettoken (input) {
+      this.token = input
+    },
+    getname (input) {
+      this.name = input
+    },
+    getuserid (input) {
+      this.userid = input
+    }
+  }
+}
+</script>
 
 <style>
 #app {

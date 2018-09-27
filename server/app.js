@@ -3,11 +3,13 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 mongoose.connect('mongodb://localhost:27017/vwitter', {useNewUrlParser: true})
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+app.use(cors())
 
 const UserRouters = require('./routes/UserRouters')
 
